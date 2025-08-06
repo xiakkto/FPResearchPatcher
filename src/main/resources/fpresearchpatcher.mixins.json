@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.yourname.fpresearchpatcher.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "fpresearchpatcher.refmap.json",
+  "mixins": [
+    "ResearchLoaderMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

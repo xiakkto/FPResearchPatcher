@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="MIT"
+
+[[mods]]
+modId="fpresearchpatcher"
+version="1.0.0"
+displayName="FuturePack Research Patcher"
+authors="xiakk"
+description='''
+Allows modpack makers to override FuturePack research configurations using datapacks.
+'''
+
+[[dependencies.fpresearchpatcher]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.fpresearchpatcher]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2,1.19)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.fpresearchpatcher]]
+    modId="futurepack"
+    mandatory=true
+    versionRange="[33.0.7547,)"
+    ordering="AFTER"
+    side="BOTH"

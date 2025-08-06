@@ -1,0 +1,90 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.spongepowered.mixin'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+
+version = '1.0.0'
+group = 'com.yourname.fpresearchpatcher'
+archivesBaseName = 'fpresearchpatcher-1.18.2'
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
+minecraft {
+    mappings channel: 'official', version: '1.18.2'
+    
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=fpresearchpatcher.mixins.json"
+            
+            mods {
+                fpresearchpatcher {
+                    source sourceSets.main
+                }
+            }
+        }
+        
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            arg "-mixin.config=fpresearchpatcher.mixins.json"
+            
+            mods {
+                fpresearchpatcher {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+mixin {
+    add sourceSets.main, "fpresearchpatcher.refmap.json"
+    config "fpresearchpatcher.mixins.json"
+}
+
+repositories {
+    maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+    // 添加 FuturePack 的仓库（如果有的话）
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
+    implementation fg.deobf(files("libs/Futurepack-1.18.2-33.0.7547.jar"))
+}
+
+jar {
+    manifest {
+        attributes([
+            "Specification-Title": "fpresearchpatcher",
+            "Specification-Vendor": "yourname",
+            "Specification-Version": "1",
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor": "yourname",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "MixinConfigs": "fpresearchpatcher.mixins.json"
+        ])
+    }
+}
+
+jar.finalizedBy('reobfJar')
