@@ -23,3 +23,67 @@ A Minecraft Forge mod that allows modpack makers to override FuturePack research
 
 ### Method 1: KubeJS Integration (Recommended)
 Place your research override files in:
+kubejs/data/[namespace]/futurepack_research/[page_name].json
+### Method 2: Standalone Datapack
+Create a datapack structure:
+datapack_name/
+├── pack.mcmeta
+└── data/
+└── [namespace]/
+└── futurepack_research/
+└── [page_name].json
+
+### Available Pages
+- `main.json` - Main research page
+- `story.json` - Story researches
+- `production.json` - Production researches
+- `energy.json` - Energy researches
+- `logistic.json` - Logistics researches
+- `chips.json` - Chip researches
+- `deco.json` - Decoration researches
+- `space.json` - Space researches
+- `tools.json` - Tool researches
+## Example
+Override industrial furnace position in `production.json`:
+```json
+[
+  {
+    "id": "production.industrieofen",
+    "page": "production",
+    "x": 0,
+    "y": 0,
+    "parents": [],
+    "aspects": [],
+    "level": 0,
+    "time": 0,
+    "need": [],
+    "icon": {
+      "name": "futurepack:industrial_furnace"
+    },
+    "enables": [
+      {
+        "name": "futurepack:industrial_furnace"
+      }
+    ]
+  }
+]
+```
+## Commands
+1.`/reload` - Reload all datapacks
+2.`/fpreload`- Force reload FuturePack research system
+
+## Building from Source
+```
+git clone https://github.com/你的用户名/FPResearchPatcher.git
+cd FPResearchPatcher
+./gradlew build
+```
+The compiled JAR will be in build/libs/
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Credits
+FuturePack by MCenderdragon
+Built with MinecraftForge
+Uses SpongePowered Mixin
