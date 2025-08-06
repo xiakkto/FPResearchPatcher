@@ -69,8 +69,8 @@ Override industrial furnace position in `production.json`:
 ]
 ```
 ## Commands
-1.`/reload` - Reload all datapacks
-2.`/fpreload`- Force reload FuturePack research system
+1. `/reload` - Reload all datapacks
+2. `/fpreload`- Force reload FuturePack research system
 
 ## Building from Source
 ```
@@ -84,6 +84,6 @@ The compiled JAR will be in build/libs/
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Credits
-FuturePack by MCenderdragon
-Built with MinecraftForge
-Uses SpongePowered Mixin
+- FuturePack by MCenderdragon
+- Built with MinecraftForge
+- Uses SpongePowered Mixin
