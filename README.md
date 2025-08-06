@@ -74,7 +74,7 @@ Override industrial furnace position in `production.json`:
 
 ## Building from Source
 ```
-git clone https://github.com/你的用户名/FPResearchPatcher.git
+git clone https://github.com/yourname/FPResearchPatcher.git
 cd FPResearchPatcher
 ./gradlew build
 ```
