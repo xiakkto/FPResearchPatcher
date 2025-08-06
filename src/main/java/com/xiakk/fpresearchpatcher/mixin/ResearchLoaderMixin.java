@@ -50,14 +50,11 @@ public class ResearchLoaderMixin {
         )
     )
     private Object redirectFromJson(Gson gson, JsonReader reader, java.lang.reflect.Type type, String modID, Reader read) {
-        // 读取原始数据
         JsonArray original = gson.fromJson(reader, JsonArray.class);
         
-        // 获取当前页面名称
         String pageName = getCurrentPageName();
         FPResearchPatcher.LOGGER.info("Processing research page: {} (index: {})", pageName, currentPageIndex);
-        
-        // 获取覆盖数据
+
         JsonArray customArray = DatapackLoader.getOverridesForPage(pageName);
         
         if (customArray != null) {
@@ -82,8 +79,7 @@ public class ResearchLoaderMixin {
     private JsonArray mergeResearchArrays(JsonArray original, JsonArray custom) {
         JsonArray result = new JsonArray();
         Map<String, JsonObject> researchMap = new HashMap<>();
-        
-        // 先添加原始研究
+
         FPResearchPatcher.LOGGER.info("Original array has {} elements", original.size());
         for (JsonElement element : original) {
             if (element.isJsonObject()) {
@@ -94,8 +90,7 @@ public class ResearchLoaderMixin {
                 }
             }
         }
-        
-        // 覆盖或添加自定义研究
+
         FPResearchPatcher.LOGGER.info("Custom array has {} elements", custom.size());
         for (JsonElement element : custom) {
             if (element.isJsonObject()) {
@@ -107,8 +102,7 @@ public class ResearchLoaderMixin {
                 }
             }
         }
-        
-        // 转换回JsonArray
+
         for (JsonObject obj : researchMap.values()) {
             result.add(obj);
         }
