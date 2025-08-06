@@ -82,9 +82,6 @@ public class DatapackLoader {
             }
             
             FPResearchPatcher.LOGGER.info("=== Datapack reload complete: {} pages loaded ===", datapackOverrides.size());
-            
-            // 不要在这里自动重载研究系统
-            // tryReloadResearch();
         }
     }
 }
