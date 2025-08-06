@@ -22,7 +22,6 @@ public class ReloadCommand {
                 .requires(source -> source.hasPermission(2))
                 .executes(context -> {
                     try {
-                        // 重新初始化研究系统
                         futurepack.common.research.ResearchLoader.instance.init();
                         
                         context.getSource().sendSuccess(
