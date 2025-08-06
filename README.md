@@ -1,12 +1,25 @@
 # FuturePack Research Patcher
 
-允许通过数据包修改FuturePack的研究系统。
+[![](https://img.shields.io/badge/Minecraft-1.18.2-brightgreen)](https://www.minecraft.net/)
+[![](https://img.shields.io/badge/Forge-40.3.11-orange)](https://files.minecraftforge.net/)
+[![](https://img.shields.io/badge/FuturePack-33.0.7547+-blue)](https://www.curseforge.com/minecraft/mc-mods/futurepack)
 
-## 使用方法
-将研究文件放在：`kubejs/data/<modpack name>/futurepack_research/页面名.json`或者`datapacks\<modpack name>\data\fpresearchpatcher\futurepack_research`
+A Minecraft Forge mod that allows modpack makers to override FuturePack research configurations using the datapack system.
 
-## 页面名称
-- production.json - 生产
-- chips.json - 芯片
-- energy.json - 能源
-- 其他...
+## Features
+
+- Override any FuturePack research using datapacks
+- Hot-reload support with `/reload` command
+- KubeJS integration support
+- Custom `/fpreload` command for manual research reload
+
+## Installation
+
+1. Download the latest version from [Releases](https://github.com/你的用户名/FPResearchPatcher/releases)
+2. Place the JAR file in your `mods` folder
+3. Ensure FuturePack is also installed
+
+## Usage
+
+### Method 1: KubeJS Integration (Recommended)
+Place your research override files in:
